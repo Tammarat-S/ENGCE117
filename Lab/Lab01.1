@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main() {
+    int n ; // ตัวแปรสำหรับเก็บจำนวนรอบ
+    //----รับจำนวนรอบและเช็คว่ามากกว่าศูนย์หรือไม่
+    if(scanf( "%d" , &n ) != 1) {
+        while( getchar() != '\n' ) ; // เคลียร์บัฟเฟอร์
+        return 1 ; // จบโปรแกรม
+    }//end if
+    //ลูปแสดงประโยคตามจำนวนรอบที่รับมา
+    for( ; n > 0 ; n-- ) {
+        printf( "Hello Loop!\n" ) ;
+    }//end for
+    return 0 ;
+}//end main
