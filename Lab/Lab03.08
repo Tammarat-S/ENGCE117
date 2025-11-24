@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+struct Campaign {
+    char Name[60] ;
+    float productprinsea ;
+    int saleesCount ;
+    float ADpays ;
+} ;
+
+int main() {
+    int round ;
+    float comisrate = 0 ;
+    float allReven = 0 ;
+    float Aallcommission ;
+    float Netloss = 0 ;
+    
+    if(scanf( "%d" , &round ) != 1 ) {
+        return 1 ;
+    }
+
+    struct Campaign comrade[round] ;
+
+    for( int i = 0 ; i < round ; i++ ) {
+
+        if(scanf( "%s %f %d %f" ,comrade[i].Name ,&comrade[i].productprinsea ,&comrade[i].saleesCount,&comrade[i].ADpays ) != 4 ) {
+            return 1 ;
+        }
+
+        if( comrade[i].saleesCount >= 20 ) {
+            comisrate = 0.20 ;
+        }else if( comrade[i].saleesCount >= 10 ) {
+            comisrate = 0.15 ;
+        }else if( comrade[i].saleesCount < 10 ) {
+            comisrate = 0.1 ;
+        }
+
+        allReven = comrade[i].saleesCount * comrade[i].productprinsea ;
+        Aallcommission = allReven * comisrate ;
+        Netloss = Aallcommission  - comrade[i].ADpays ;
+
+        printf( "---Campaign: %s ---\n" , comrade[i].Name ) ;
+        printf( "Sales: %d, Ad Spend: %.2f\n" , comrade[i].saleesCount , comrade[i].ADpays ) ;
+        printf( "Rate Used: %.0f%%\n" , comisrate * 100 ) ;
+        printf( "Calculation: (%.2f *  %.0f%%) - %.2f = %.2f\n" , allReven, comisrate * 100 , comrade[i].ADpays, Netloss ) ;
+        printf( "Net Result: %.2f\n" , Netloss ) ;
+
+    }
+    return 0 ;
+}
