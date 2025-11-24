@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+int main() {
+    int N_Cal, i , Atk_lvl , Opp_lvl , Opp_Armor ;
+    float Base_atk , Dmg_Reduct , Net_Dmg , Dmg_deflict ;
+    const float  W_Threshold = 150.0 ;
+
+    if(scanf( "%d" , &N_Cal ) != 1 ) {
+        return 1 ;
+    }
+
+    for( i = 0 ; i < N_Cal ; i++ ) {
+
+        if(scanf( "%d %d %d" , &Atk_lvl , &Opp_lvl , &Opp_Armor ) != 3 ) {
+            return 1 ;
+        }
+
+        Base_atk = Atk_lvl * 10 ;
+
+        if(Opp_Armor < 50 ) {
+            Dmg_Reduct = 0.20 ;
+        }else if ( Opp_Armor >= 50 ) {
+            Dmg_Reduct = 0.40 ;
+        }
+
+        Net_Dmg = Base_atk * (1.0 - Dmg_Reduct ) ;
+
+        if( Net_Dmg >= W_Threshold) {
+            printf( "SUCCESS! Net Damage: %.2f\n" , Net_Dmg ) ;
+        }else if (Net_Dmg < W_Threshold ){
+            Dmg_deflict = W_Threshold - Net_Dmg ;
+            printf( "FAIL. Deficit: %.2f\n" , Dmg_deflict ) ;
+        }    
+
+    }
+    return 0 ;
+}
