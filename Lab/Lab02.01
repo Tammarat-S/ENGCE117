@@ -1,14 +1,17 @@
 #include <stdio.h>
 
 int main() {
-    int N , i ; 
+    int N , i = 0 ; 
     if(scanf( "%d" , &N ) != 1) {
         printf("%d",N);
         while( getchar() != '\n' ) ; 
-        return 0 ; 
+        return 1 ; 
     }
-    for( i = N ; i > 0 ; i-- ) {
-        printf( "Hello Loop!\n" ) ;
+    
+    while ( i < N ) {
+        printf("Hello Loop!\n") ;
+        i++ ;
     }
+
     return 0 ;
 }
