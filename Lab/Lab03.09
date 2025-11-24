@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+int main() {
+    int N ;
+    float startBudget ;
+    float leftBudget ;
+    float dailypays ;
+    if(scanf( "%f %d" , &startBudget, &N ) != 2 ) {
+        return 1 ;
+    }
+
+    leftBudget = startBudget ;
+
+    printf( "Dat | Spend | Remaining\n" ) ;
+    printf( "--------------------------\n" ) ;
+
+    for(int days = 1 ; days <= N ; days++ ) {
+        dailypays = 0 ;
+
+        if( leftBudget >= 500.00 ) {
+            dailypays = 100.00 ;
+        }else if( leftBudget >= 100 && leftBudget < 500 ) {
+            dailypays = 50.00 ;
+        }else if( leftBudget < 100 ) {
+            dailypays = 20.00 ;
+        }
+
+        if( dailypays > leftBudget ){
+            dailypays = leftBudget ;
+        }
+        leftBudget -= dailypays ;
+        printf( "%d | %.2f | %.2f\n" , days, dailypays , leftBudget ) ;
+    }
+    printf( "--------------------------\n" ) ;
+    printf("Final Budget: %.2f\n" , leftBudget ) ;
+    return 0 ;
+}
