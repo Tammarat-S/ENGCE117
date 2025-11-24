@@ -4,7 +4,6 @@ struct SalessRecord {
     char name[50] ;
     float target ;
     float actual ;
-    float blockAi[10] ;
 } ;
 
 int main() {
