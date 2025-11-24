@@ -1,0 +1,56 @@
+#include <stdio.h>
+
+int main() {
+    int choice ;
+    float TTCost = 0.0 ;
+    float paidAmount ;
+    float Change ;
+
+    do{
+        printf( "\n---Vending Machine ---\n" ) ;
+        printf( "1. Coke (15.00)\n" ) ;
+        printf( "2. Water (10.00)\n" ) ;
+        printf( "3. Snack (25.00)\n" ) ;
+        printf( "4. Exit and Pay\n" ) ;
+        printf( "Current Total: %.2f\n" , TTCost ) ;
+        printf( "Select item (1-4): " ) ;
+
+        if(scanf( "%d" , &choice ) != 1 ) {
+            return 1 ;
+        }
+
+        switch ( choice ) {
+            case 1 :
+                TTCost += 15 ;
+                printf( "Item added Current Total: %.2f\n" , TTCost ) ;
+                break ;
+            case 2 :
+                TTCost += 10 ;
+                printf( "Item added Current Total: %.2f\n" , TTCost ) ;
+                break ;
+            case 3 :
+                TTCost += 25 ;
+                printf( "Item added Current Total: %.2f\n" , TTCost ) ;
+                break ;
+            default :
+                break ;
+        }
+    }while( choice != 4 ) ;
+
+    if ( TTCost > 0 ) {
+        printf( "Total due: %.2f\n" , TTCost ) ;
+        printf( "Enter paid amount: " ) ;
+        if(scanf( "%f" , &paidAmount ) != 1 ) {
+            return 1 ;
+        }
+        if( paidAmount >= TTCost ) {
+            Change = paidAmount - TTCost ;
+            printf( "Purchase Successful. Change: %.2f\n" , Change ) ;
+        }else {
+            printf( "Insufficient payment. Purchase canelled.\n" ) ;
+        }
+    }else {
+        printf( "No items purchased. Goodbye!\n" ) ;
+    }
+    return 0 ;
+}
