@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    char text[101] ;
+    int countup = 0 , countlow = 0 , countdigit = 0 , countother = 0 ;
+    int test ;
+    if(scanf( "%s", text) != 1 ) {
+        return 1 ;
+    }
+
+    for ( int i = 0 ; text[i] != '\0' ; i++ ) {
+        
+        if( text[i] - '`' >= 1 && text[i] - '`' <= 26 ) {
+            countlow ++ ;
+        }else if ( text[i] - '@' >= 1 && text[i] - '@' <= 26 ) {
+            countup ++ ;
+        }else if ( text[i] - '0' >= 0 && text[i] - '0' <= 9 ) {
+            countdigit ++ ;
+        }else {
+            countother ++ ;
+        }
+    }
+        printf( "uppercase: %d\n" , countup ) ;
+        printf( "Lowercase: %d\n" , countlow ) ;
+        printf( "Digits: %d\n" , countdigit ) ;
+        printf( "Specia/Other: %d\n" , countother ) ;
+    return 0 ;
+}
