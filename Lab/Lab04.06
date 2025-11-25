@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int main() {
+    int Num[5] ;
+    int i , abobe_AVG = 0 , Sum = 0 ;
+    float AVG = 0.0 ;
+
+    for( i = 0 ; i < 5 ; i ++ ) {
+        printf( "Enter score for student %d: " , i + 1 ) ;
+        if( scanf( "%d" , &Num[i] ) != 1 ) {
+            return 1 ;
+        }
+        Sum += Num[i] ;
+        AVG = (float) Sum / 5 ;
+    }
+    for( i = 0 ; i < 5 ; i ++ ){
+        if( Num[i] > AVG ) {
+            abobe_AVG ++ ;
+        }
+    }
+    printf( "\n--- STUDENT SCORE ANALYSIS REPORT ---\n" ) ;
+    printf( "Recorded Scores: " ) ;
+    for ( i = 0 ; i < 5 ; i ++ ) {
+        printf( "%3d" , Num[i] ) ;
+    }
+        printf( "\nTotal Sum: %d\n" , Sum ) ;
+        printf( "Average Score: %.2f\n" , AVG ) ;
+        printf( "Number of Scores Above Average: %d" , abobe_AVG ) ;
+    
+    return 0 ;
+}
