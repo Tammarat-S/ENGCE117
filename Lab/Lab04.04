@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main() {
+    int Num[5] ;
+    int i , even_C = 0 , odd_C = 0 ;
+
+    for( i = 0 ; i < 5 ; i ++ ) {
+        printf( "Enter integer number %d: " , i + 1 ) ;
+        if( scanf( "%d" , &Num[i] ) != 1 ) {
+            return 1 ;
+        }
+        if( Num[i] % 2 == 0){
+            even_C ++ ;
+        } else {
+            odd_C ++ ;
+        }
+    }
+    printf( "\n--- NUMBER CLASSIFICATION REPORT ---\n" ) ;
+    printf( "Recorded Numbers: " ) ;
+    for ( i = 0 ; i < 5 ; i ++ ) {
+        printf( "%3d" , Num[i] ) ;
+    }
+        printf( "\nTotal Even Numbers Found: %d\n" , even_C ) ;
+        printf( "Total Odd Numbers Found: %d" , odd_C ) ;
+    
+    return 0 ;
+}
