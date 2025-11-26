@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+int main() {
+    int Maximum = 10 ;
+    int Num[Maximum] ;
+    int Status[Maximum] ;
+    int N , i , Count = 0 ;
+    printf( "Enter the number of element ( N max %d )\n" , Maximum ) ;
+    scanf( "%d" , &N ) ;
+
+    if ( N  > Maximum || N < 1 ) {
+        N = Maximum ;
+    }
+
+    printf( "Enter %d interger numbers: \n" , N ) ;
+    for( i = 0 ; i < N ; i ++ ) {
+        printf( "Element %d: " , i + 1 ) ;
+        scanf( "%d" , &Num[i] ) ;
+    }
+
+    printf( "--- FREQUENCY ANALYSIS REPORT ---\n" ) ;
+    printf( "Recorded Numbers: " ) ;
+
+    for ( i = 0 ; i < N ; i ++ ) {
+        printf( "%3d" , Num[i] ) ;
+    }
+    printf( "\n---FREQUENCY TABLE ---\n" ) ;
+    printf( "Number | Frequency \n" ) ;
+    printf( "-------|----------\n" ) ;
+
+    for ( i = 0 ; i < N ; i ++ ) {
+        Count = 0 ;
+       if(Status[i] == -1 ) {
+            continue ;
+       } 
+       for (int A = 0 ; A < N ; A ++ ) {
+            if( Num[A] == Num[i] ) {
+                Status[A] = -1 ;
+                Count++ ;
+                Status[i] = 1 ;
+            }
+        }
+       if (Status[i] != -1 ) {
+            printf("%d  |  %d\n" , Num[i] , Count ) ;
+       }
+    }   
+    return 0 ;
+}
