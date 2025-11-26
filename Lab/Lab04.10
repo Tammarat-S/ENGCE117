@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main() {
+    int R , C ;
+    int Data[3][3] ;
+
+    //int Data[3][3] ;
+
+    printf( "Enter 9 integer numbers for the 3*3 array\n" ) ;
+
+    for ( R = 0 ; R < 3 ; R ++ ){
+        for( C = 0 ; C < 3 ; C ++ ){
+            printf( "Enter element for Row %d, Col %d: \n" , R , C ) ;
+            if(scanf( "%d" , &Data[R][C]) != 1 ) {
+                return 1 ;
+            }
+        }
+    }
+    printf( "\n--- TWO DIMENSION ARRAY REPORT ---\n" ) ;
+    printf( "Array Size: 3 Row x 3 Columns\n" ) ;
+    printf( "Content (Table Format)\n" ) ;
+    for ( R = 0 ; R < 3 ; R ++ ){
+        for( C = 0 ; C < 3 ; C ++ ){
+            printf( "%d " , Data[R][C] ) ;
+        }
+        printf( "\n" ) ;
+    }
+    return 0 ;
+}
