@@ -6,7 +6,9 @@ int main() {
     int Status[Maximum] ;
     int N , i , Count = 0 ;
     printf( "Enter the number of element ( N max %d )\n" , Maximum ) ;
-    scanf( "%d" , &N ) ;
+    if(scanf( "%d" , &N ) != 1 ) {
+        return 1 ;
+    }
 
     if ( N  > Maximum || N < 1 ) {
         N = Maximum ;
@@ -15,7 +17,9 @@ int main() {
     printf( "Enter %d interger numbers: \n" , N ) ;
     for( i = 0 ; i < N ; i ++ ) {
         printf( "Element %d: " , i + 1 ) ;
-        scanf( "%d" , &Num[i] ) ;
+        if(scanf( "%d" , &Num[i] ) != 1 ) {
+            return 1 ;
+        }
     }
 
     printf( "--- FREQUENCY ANALYSIS REPORT ---\n" ) ;
