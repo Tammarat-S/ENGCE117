@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int main() {
+    int Maximum = 10 ;
+    int Num[Maximum] ;
+    int N , i , S_Value , Count = 0 ;
+    printf( "Enter the number of element ( N max %d )\n" , Maximum ) ;
+    scanf( "%d" , &N ) ;
+
+    if ( N  > Maximum || N < 1 ) {
+        N = Maximum ;
+    }
+
+    printf( "Enter %d interger numbers: \n" , N ) ;
+    for( i = 0 ; i < N ; i ++ ) {
+        printf( "Element %d: " , i + 1 ) ;
+        scanf( "%d" , &Num[i] ) ;
+    }
+
+    printf( "Enter Search Value: " ) ;
+    scanf( "%d" , &S_Value ) ;
+    
+    for( i = 0 ; i < N ; i ++ ) {
+        if( S_Value == Num[i] ) {
+            Count ++ ;
+        }
+    }
+
+    printf( "\n--- FREQUENCY ANALYSIS REPORT ---\n" ) ;
+    printf( "Total elements recorded (N): %d\n " , N ) ;
+    printf( "Recorded Numbers: " ) ;
+
+    for ( i = 0 ; i < N ; i ++ ) {
+        printf( "%3d" , Num[i] ) ;
+    }
+        printf( "\nSearch Value: %d\n" , S_Value ) ;
+        printf( "Frequency Count: %d\n" , Count ) ;
+    
+    return 0 ;
+
+}
