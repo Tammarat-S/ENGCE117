@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main() {
+    int R , C , sum = 0 ;
+    int Data[2][4] ;
+
+    printf( "Enter 9 integer numbers for the 3*3 array\n" ) ;
+
+    for ( R = 0 ; R < 2 ; R ++ ){
+        for( C = 0 ; C < 4 ; C ++ ){
+            printf( "Enter element for Row %d, Col %d: \n" , R , C ) ;
+            if(scanf( "%d" , &Data[R][C]) != 1 ) {
+                return 1 ;
+            }
+            sum += Data[R][C] ;
+        }
+    }
+
+    printf( "\n--- 2D ARRAY SUMMATION REPORT ---\n" ) ;
+    printf( "Recorded Matrix (2x4)\n" ) ;
+    for ( R = 0 ; R < 2 ; R ++ ){
+        for( C = 0 ; C < 4 ; C ++ ){
+            printf( "%d " , Data[R][C] ) ;
+        }
+        printf( "\n" ) ;
+    }
+    printf( "\nTotal Sum of all elements: %d", sum ) ;
+    return 0 ;
+}
