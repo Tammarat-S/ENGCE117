@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main () {
+    int Salary ;
+    float R_Tax = 0.0 , A_Tax = 0.0 , N_Salary = 0.0 ;
+
+    printf( "Enter Gross Salary (THB/mounth, integer): " ) ;
+    scanf( "%d" , &Salary ) ;
+
+    if( Salary >= 50000 ) {
+        R_Tax = 0.10 ;
+    }else if( Salary >= 20000 && Salary < 50000 ) {
+        R_Tax = 0.05 ;
+    }
+
+    A_Tax = (float)Salary * R_Tax ;
+    N_Salary = (float)Salary - A_Tax ;
+
+    printf( "\n---SALARY CALCULATION REPORT ---\n" ) ;
+    printf( "Gross Salary %d THB\n" , Salary ) ;
+    printf( "Tax Rate Applied: %.0f%%\n" , R_Tax * 100 ) ;
+    printf( "Tax Amount Deducted: %.2f\n" , A_Tax ) ;
+    printf( " Net Salary: %0.2f" , N_Salary ) ;
+
+    return 0 ;
+
+}
