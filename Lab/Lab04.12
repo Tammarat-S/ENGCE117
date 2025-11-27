@@ -1,0 +1,64 @@
+#include <stdio.h>
+
+void print_Mat( int Row, int Col , int Mat[Row][Col] ) ;
+
+int main() {
+    int R = 2 , C = 3 ;
+    int a[R][C] , b[R][C] , bT[C][R] , c[R][R] ;
+    int i , j , k ;
+
+    for( i = 0 ; i < R ; i ++ ) {
+        for( j = 0 ; j < C ; j ++ ) {
+            printf( "a[%d][%d]: " , i , j ) ;
+            scanf( "%d" , &a[i][j] ) ;
+        }
+    }
+
+    for( i = 0 ; i < R ; i ++ ) {
+        for( j = 0 ; j < C ; j ++ ) {
+            printf( "b[%d][%d]: " , i , j ) ;
+            scanf( "%d" , &b[i][j] ) ;
+        }
+    }
+
+    for( i = 0 ; i < R ; i ++ ) {
+        for( j = 0 ; j < C ; j ++ ) {
+            bT[j][i] = b[i][j] ;
+        }
+    }
+
+    for( i = 0 ; i < R ; i ++ ) {
+        for( j = 0 ; j < R ; j ++ ) {
+            c[i][j] = 0 ;
+            for( k = 0 ; k < C ; k++ ) {
+                c[i][j] += a[i][k] * bT[k][j] ;
+            }
+        }
+    }
+
+    printf( "\n--- MATRIX MULITPLICATION REPORT ---\n" ) ;
+
+    printf( "\nMatrix A (2x3) : \n" ) ;
+    print_Mat(R, C, a ) ;
+
+    printf( "\nMatrix B (2x3) : \n" ) ;
+    print_Mat(R, C, b ) ;
+
+    printf( "\nMatrix B Transposed (BT,3x2) : \n" ) ;
+    print_Mat(C, R, bT ) ;
+
+    printf( "\nMatrix C (A x BT,2x2) : \n" ) ;
+    print_Mat(R, R, c ) ;
+
+    return 0 ;
+}
+
+
+void print_Mat(int Row, int Col , int Mat[Row][Col] ) {
+    for (int i = 0 ; i < Row ; i++ ) {
+        for (int j = 0 ; j < Col ; j ++ ) {
+            printf("%d " , Mat[i][j] );
+        }
+        printf( "\n" ) ;
+    } 
+}
