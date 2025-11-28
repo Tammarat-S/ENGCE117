@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int Getset( int **D ) ;
+
+int main() {
+    int *data, num ;
+    num = Getset( &data ) ;
+    for( int i = 0 ; i < num ; i ++ ) {
+        printf( "%d " , data[i] ) ;  
+    }
+    
+    delete[] (data) ;
+    return 0 ;
+}
+
+int Getset( int **D ) {
+    int N ;
+    printf( "Enter Data Size: " ) ;
+    scanf( "%d" , &N ) ;
+    *D = new int[N] ;
+    for( int i = 0 ; i < N ; i ++ ) {
+        scanf("%d" , &(*D)[i] ) ;
+    } 
+    return N ;
+}
