@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+struct empolyee{
+    int id ;
+    int G_salary ;
+    int bonus ;
+    int TT_income ;
+} ;
+int Cal_Net_salary( int TT_income ) ;
+
+int main () {
+    struct empolyee emp ;
+    int N_salary = 0 ;
+
+    printf( "Enter Id: " ) ;
+    scanf( "%d" , &emp.id ) ;
+
+    printf( "Enter gross Salary: " ) ;
+    scanf( "%d" , &emp.G_salary ) ;
+
+    printf( "Enter Bonus " ) ;
+    scanf( "%d" , &emp.bonus ) ;
+
+    emp.TT_income = emp.G_salary + emp.bonus ;
+    N_salary = Cal_Net_salary( emp.TT_income ) ;
+
+    printf( "\n---EMPLOYEE SALARY REPORT---\n" ) ;
+    printf( "ID: %d\n" , emp.id ) ;
+    printf( "Gross Salary: %d\n" , emp.G_salary ) ;
+    printf( "Bonus: %d\n" , emp.bonus ) ;
+    printf( "Total Income: %d\n" , emp.TT_income ) ;
+    printf( "Net Salary: %d" , N_salary ) ;
+
+    return 0 ;
+}
+
+int Cal_Net_salary( int TT_income ) {
+    int tax = 0 ;
+    int N_S = 0 ;
+    if( TT_income > 30000 ){
+        tax = TT_income * 0.1 ;
+    }else if (TT_income <= 30000 ) {
+        tax = TT_income * 0.05 ;
+    }
+    N_S = TT_income - tax ;
+    return N_S ;
+}
