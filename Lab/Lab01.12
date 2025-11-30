@@ -1,39 +1,39 @@
 #include <stdio.h>
 
 int main() {
-    int planCode ;
-    float dataUsage_GB ;
-    float totalBill = 0.0 ;
+    int plan_Code ;
+    float dataUse_GB , TTBill = 0.0 ;
     
     
-    if (scanf( "%d %f" , &planCode, &dataUsage_GB ) != 2 ) {
+    if (scanf( "%d %f" , &plan_Code, &dataUse_GB ) != 2 ) {
         return 1 ;
     }
     
-    switch (planCode)
-    {
+    switch (plan_Code) {
     case 1:
-        if( dataUsage_GB <= 10 ) {
-            totalBill = 299 ; 
-        }else if ( dataUsage_GB > 10 ) {
-            totalBill = 299 + 10 * ( dataUsage_GB - 10 ) ;
+        if( dataUse_GB <= 10 ) {
+            TTBill = 299 ; 
+        }else if ( dataUse_GB > 10 ) {
+            TTBill = 299 + 10 * ( dataUse_GB - 10 ) ;
         }
         break ;
     case 2:
-        if( dataUsage_GB <= 20 ) {
-            totalBill = 599 ;
-        }else if( dataUsage_GB >= 20 ) {
-            totalBill = 599 + 50 + 5* ( dataUsage_GB - 20 ) ;
+        if( dataUse_GB <= 20 ) {
+            TTBill = 599 ;
+        }else if( dataUse_GB >= 20 ) {
+            TTBill = 599 + 50 + 5 * ( dataUse_GB - 20 ) ;
         }
-    default:
+        break ;
+    default :
         break ;
     }
 
-    if ( planCode == 1 || planCode == 2 ) {
-        printf( "%.2f\n" , totalBill ) ;
+    if ( plan_Code == 1 || plan_Code == 2 ) {
+        printf( "%.2f\n" , TTBill ) ;
     } else {
-        printf( "Invalid Plan Code\n" ) ;
+        printf( "Invalid Plan Code" ) ;
     }
 
     return 0 ;
+
 }
