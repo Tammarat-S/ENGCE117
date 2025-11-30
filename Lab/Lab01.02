@@ -1,11 +1,12 @@
 #include <stdio.h>
 
-int main(){
+int main() {
+
     int score ;
     if ( scanf( "%d" , &score ) != 1 || score < 0 ) {
-        while( getchar() != '\n' ) ;
-        return 0 ; 
+        return 1 ; 
     }
+
     if( score >= 80 ) {
         printf( "Grade A" ) ;
     }else if ( score >= 70 && score < 80 ) {
@@ -17,5 +18,6 @@ int main(){
     }else if ( score < 50 && score >= 0 ) {
         printf( "Grade F" ) ;
     }
+
     return 0 ;
 }
