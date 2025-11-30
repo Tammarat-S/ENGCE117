@@ -1,9 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    int number ;
-    int evenSum = 0 ;
-    int oddSum = 0 ;
+    int number , even_sum = 0 , odd_sum = 0 ;
     
     if ( scanf( "%d" , &number ) != 1) {
         return 1 ;
@@ -11,16 +9,16 @@ int main() {
 
     while ( number != 0 ) {
         if ( number % 2 == 0 ) {
-            evenSum += number ;
+            even_sum += number ;
         }else {
-            oddSum += number ;
+            odd_sum += number ;
         }
         if ( scanf( "%d" , &number ) != 1 ) {
             break ; 
         }
     }
 
-    printf( "Even Sum: %d\n" , evenSum ) ;
-    printf( "Odd Sum: %d\n" , oddSum ) ;
+    printf( "Even Sum: %d\n" , even_sum ) ;
+    printf( "Odd Sum: %d" , odd_sum ) ;
     return 0 ;
 }
