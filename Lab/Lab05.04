@@ -1,0 +1,51 @@
+#include <stdio.h>
+
+struct Student {
+    int id ;
+    int score ;
+} ;
+
+#define SIZE 3 
+
+int find_h_score ( struct Student hight[] , int size ) ;
+
+int main () {
+    int i , top_id = 0 ;
+
+    struct Student stu[SIZE] ;
+    
+    printf( "Enter data for %d students:\n" , SIZE ) ;
+    for( i = 0 ; i < SIZE ; i ++ ) {
+        printf( "--- Student %d ---\n" , i + 1 ) ;
+        printf( "Enter ID: " ) ;
+        scanf( "%d" , &stu[i].id ) ;
+        printf( "Enter Score " ) ;
+        scanf( "%d" , &stu[i].score ) ;
+   
+    }
+
+    top_id = find_h_score( stu , SIZE ) ;
+
+    printf( "\n--- STUDENT SCORE REPORT ---\n" ) ;
+    printf( "ID  |  score\n" ) ;
+    printf( "----|----\n" ) ;
+
+    for( i = 0 ; i < SIZE ; i ++ ) {
+        printf("%-6d | %d\n" , stu[i].id , stu[i].score ) ;
+    }
+
+    printf( "\nTOP PERFORMER ID: %d" , top_id ) ;
+
+    return 0 ;
+} 
+
+int find_h_score ( struct Student hight[] , int size ) {
+    int i , score = 0 , top = 0 ;
+    for( i = 0 ; i < size ; i ++ ) {
+        if( hight[i].score > score ) {
+            score = hight[i].score ;
+            top = hight[i].id ;
+        }
+    }
+    return top ;
+}
