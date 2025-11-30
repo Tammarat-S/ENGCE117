@@ -2,16 +2,13 @@
 
 int main() {
     int termCode ;
-    float investmentAmount ;
-    float aprRate = 0.0 ;
-    float totalInterest = 0.0 ;
+    float investmentAmount , aprRate = 0.0 , TTInterest = 0.0 ;
     
-    if (scanf( "%d %f", &termCode, &investmentAmount ) != 2 ) {
+    if (scanf( "%d %f", &termCode , &investmentAmount ) != 2 ) {
         return 1 ; 
     }
     
-    switch (termCode)
-    {
+    switch (termCode){
     case 1:
         if( investmentAmount < 5000 ) {
             aprRate = 0.03 ;
@@ -32,14 +29,12 @@ int main() {
     default:
         break ;
     }
-    // TODO: Implement the switch statement based on termCode, 
-    // and the nested if-else logic to determine the aprRate.
     
     if ( termCode >= 1 && termCode <= 3 ) {
-        totalInterest = investmentAmount * aprRate ;
-        printf( "%.2f\n" , totalInterest ) ;
+        TTInterest = investmentAmount * aprRate ;
+        printf( "%.2f\n" , TTInterest ) ;
     } else {
-        printf( "Invalid Term Code\n" ) ;
+        printf( "Invalid Term Code" ) ;
     }
 
     return 0 ;
