@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+#define Size 5
+
+int Cal_sum( int Array[] , int size ) ;
+
+
+int main () {
+    int i = 0 , sum ;
+    int num[Size] ;
+    float avg ;
+
+    printf( "Enter 5 number:\n" ) ;
+    for( i = 0 ; i < Size ; i ++ ) {
+        scanf( "%d" , &num[i] ) ;
+    }
+
+    sum = Cal_sum( num , Size ) ;
+
+    avg = (float)sum / Size ;
+
+    printf( "\n--- ARRAY AVERAGE REPORT ---\n" ) ;
+    printf( "Recorded Numbers: " ) ;
+
+    for ( i = 0 ; i < Size ; i ++ ) {
+        printf( "%d " , num[i] ) ;
+    }
+    printf( "\nTotal Sum: %d\n" , sum ) ;
+    printf( "Average: %.2f" , avg ) ;
+    return 0 ;
+
+}
+
+int Cal_sum( int Array[] , int size ) {
+    int sum = 0 ;
+    for( int i = 0 ; i < size ; i ++ ) {
+        sum += Array[i] ;
+    }
+    return sum ;
+}
