@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+#define SIZE 5 
+
+void sort( int arr[] , int size ) ;
+void printarr( int arr[] , int size ) ;
+
+int main() {
+    int num[SIZE] , numcopy[SIZE] , i ;
+
+    printf( "Enter %d integer numbers for sorting: \n" , SIZE ) ;
+    for( i = 0 ; i < SIZE ; i ++ ) {
+        printf( "Element %d: " , i + 1 ) ;
+        scanf( "%d" , &num[i] ) ;
+        numcopy[i] = num[i] ;
+    }
+
+    sort ( numcopy , SIZE ) ;
+
+    printf( "Original Array: ") ;
+    printarr ( num , SIZE ) ;
+    printf( "\nSorted Array (Ascending): ") ;
+    printarr ( numcopy , SIZE ) ;
+
+    return 0 ;
+}
+
+void sort( int arr[] , int size ) {
+    int swap ; 
+    for( int i = 0 ; i < size ; i ++ ) {
+        for ( int a = 0 ; a < size - 1 ; a ++ ) {
+            if ( arr[a] > arr[a+1] ){
+                swap = arr[a] ;
+                arr[a] = arr[a+1] ;
+                arr[a+1] = swap ;
+            }
+        }
+    }
+}
+
+void printarr( int arr[] , int size ) {
+    for( int i = 0 ; i < size ; i ++ ) {
+        printf("%d " , arr[i]);
+    }
+}
