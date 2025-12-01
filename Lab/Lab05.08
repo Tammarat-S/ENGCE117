@@ -1,0 +1,58 @@
+#include <stdio.h>
+
+struct student {
+    int id ;
+    int m_score ;
+    int sci_score ;
+    int eng_score ;
+    int TT_score ;
+} ;
+
+char cal_grade( int TTscore ) ;
+void cal_avg( int TTscore , float *AVG ) ;
+
+int main() {
+    struct student stu ;
+    char grade ;
+    float avg ;
+
+    printf( "Enter Student ID: " ) ;
+    scanf( "%d" , &stu.id ) ;
+
+    printf( "Enter Math Score ( out of 100 ): " ) ;
+    scanf( "%d" , &stu.m_score ) ;
+
+    printf( "Enter Science Score ( out of 100 ): " ) ;
+    scanf( "%d" , &stu.sci_score ) ;
+
+    printf( "Enter English Score ( out of 100 ): " ) ;
+    scanf( "%d" , &stu.eng_score ) ;
+
+    stu.TT_score = stu.m_score + stu.sci_score + stu.eng_score ;
+
+    grade = cal_grade( stu.TT_score ) ;
+    cal_avg ( stu.TT_score , &avg ) ;
+
+    printf( "\n--- STUDENT ACADEMIC REPORT ---\n" ) ;
+    printf( "Student ID: %d\n" , stu.id ) ;
+    printf( "Math Score: %d , Science Score: %d , English Score: %d\n" , stu.m_score , stu.sci_score , stu.eng_score ) ;
+    printf( "Total Score: %d\n" , stu.TT_score ) ;
+    printf( "Average Score: %.2f\n" , avg ) ;
+    printf( "Final Grade: %c" , grade ) ;
+
+    return 0 ;
+}
+
+char cal_grade( int TTscore ) {
+    if( TTscore >= 250 ) {
+        return 'A' ;
+    }else if( TTscore >= 200 && TTscore < 250 ) {
+        return 'B' ;
+    }else {
+        return 'C' ;
+    }
+}
+
+void cal_avg( int TTscore , float *AVG ) {
+    *AVG = (float)TTscore / 3 ;
+}
