@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+struct Empoloyee{
+    int id ;
+    int salary ;
+} ;
+
+#define SIZE 4
+
+void fin_min_max( struct Empoloyee find[] , int size , int *min , int *max ) ;
+
+int main() {
+    int i , max_s = 0 , min_s = 99999999 ;
+
+    struct Empoloyee emp[SIZE] ;
+
+    for ( i = 0 ; i < SIZE ; i ++ ) {
+        scanf( "%d %d" , &emp[i].id , &emp[i].salary ) ;
+    }
+
+    fin_min_max( emp , SIZE , &min_s , &max_s ) ;
+
+    printf( "\n--- EMPLOYEE SALARY SUMMARY ---\n" ) ;
+    printf( "ID  |  Salary\n" ) ;
+    printf( "----|----\n" ) ;
+
+    for( i = 0 ; i < SIZE ; i ++ ) {
+        printf("%-6d | %d\n" , emp[i].id , emp[i].salary ) ;
+    }
+
+    printf( "\nMaximum Salary Found: %d\n" , max_s ) ;
+     printf( "Miniimum Salary Found: %d\n" , min_s ) ;
+
+    return 0 ;
+
+}
+
+void fin_min_max( struct Empoloyee find[] , int size , int *min , int *max ) {
+    int i ;
+    for( i = 0 ; i < size ; i ++ ) {
+        if(find[i].salary > *max ) {
+            *max = find[i].salary ;
+        }
+        if(find[i].salary < *min ) {
+            *min = find[i].salary ;
+        }
+    }
+}
