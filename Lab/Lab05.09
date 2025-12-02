@@ -1,0 +1,61 @@
+#include <stdio.h>
+
+struct Product {
+    int id ;
+    float C_price ;
+    float S_price ;
+    int stock ;
+} ;
+
+float cal_TTprofit ( float cost , float sell , int qty ) ;
+
+float cal_profitpercent (float cost , float sell ) ;
+
+int main () {
+    struct Product info ;
+    float TTprofit , Per_profit ;
+
+    printf( "Enter Item ID: P" ) ;
+    scanf( "%d" , &info.id ) ;
+
+    printf( "Enter Cost price per unit: \n" ) ;
+    scanf( "%f" , &info.C_price ) ;
+
+    printf( "Enter Sell price per unit: \n" ) ;
+    scanf( "%f" , &info.S_price ) ;
+
+    printf( "Enter Stock Quantity: \n" ) ;
+    scanf( "%d" , &info.stock ) ;
+
+    TTprofit = cal_TTprofit ( info.C_price , info.S_price , info.stock ) ;
+    Per_profit = cal_profitpercent ( info.C_price , info.S_price ) ;
+    
+    printf( "\n--- INVENTORY PROFIT REPORT ---\n" ) ;
+    printf( "item ID: %d\n" , info.id ) ;
+    printf( "Cost Price: %.2f, Sell Price: %.2f, Stock: %d\n" , info.C_price , info.S_price , info.stock ) ;
+    printf( "Total Profit: %.2f\n" , TTprofit ) ;
+    printf( "Profit PercentageL %.2f%%\n" , Per_profit ) ;
+    printf( "Status: " ) ;
+    if( TTprofit > 0 ) {
+        printf( "Profit!" ) ;
+    }else if ( TTprofit == 0 ) {
+        printf( "Break Even." ) ;
+    }else if ( TTprofit < 0 ) {
+        printf( "Loss!" ) ;
+    }
+
+    return 0 ;
+    
+}
+
+float cal_TTprofit ( float cost , float sell , int qty ) {
+    float TTprofit ;
+    TTprofit = ( sell - cost ) * qty ;
+    return TTprofit ;
+}
+
+float cal_profitpercent (float cost , float sell ) {
+    float percent ;
+    percent = ( ( sell - cost ) / cost ) * 100.0 ;
+    return percent ;
+}
