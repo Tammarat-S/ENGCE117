@@ -4,10 +4,13 @@ int cal_change( int TTcost , int paid ) ;
 
 int cal_denomination( int *change_remain , int domination ) ;
 
+#define SIZE 9
+
 int main() {
-    int bank[9] = { 1000 , 500 , 100 , 50 , 20 , 10 , 5 , 2 , 1 } ;
-    int store[9] ;
-    int TTcost , A_paid , i = 0 , re_amount ;
+    
+    int bank[SIZE] = { 1000 , 500 , 100 , 50 , 20 , 10 , 5 , 2 , 1 } ;
+    int store[SIZE] ;
+    int TTcost , A_paid , i = 0 , change , re_amount ;
 
     printf( "Enter Total Cost: " ) ;
     scanf( "%d" , &TTcost ) ;
@@ -15,8 +18,10 @@ int main() {
     printf( "Enter Amount Paid: " ) ;
     scanf( "%d" , &A_paid ) ;
 
-    int change = cal_change ( TTcost , A_paid ) ;
-    
+    //----ทำการคำนวณเงินทอน
+    change = cal_change ( TTcost , A_paid ) ;
+
+    //----|ทำการเช็คว่าเงินที่จ่ายมามีค่ามากกว่าราคารวมหรือไม่
     if( change == -1 ) {
         printf( "\nError amount Paid is less than Total Cost" ) ;
         return 1 ;
@@ -24,16 +29,20 @@ int main() {
 
     re_amount = change ;
 
-    for ( i= 0 ; i < 9 ; i++ ) {
+    //----|ทำการคำนวณจำนวนและประเภทเงินที่ต้องทอน
+    for ( i= 0 ; i < SIZE ; i++ ) {
         store[i] = cal_denomination( &re_amount , bank[i] ) ;
     }
 
+    //----|แสดงผล
     printf( "\n--- CHANGE CALCULATION REPORT ---\n" ) ;
     printf( "Total Cost: %d\n" , TTcost ) ;
     printf( "Amount Paid: %d\n" , A_paid ) ;
     printf( "Change Amount: %d\n" , change ) ;
     printf( "\nDenomunation Breakdown:\n" ) ;
-    for( i = 0 ; i < 9 ; i ++ ) {
+
+    //----|วนลูปแสดงประเภทและจำนวนของเงินที่จะทอน
+    for( i = 0 ; i < SIZE ; i ++ ) {
         if( store[i] > 0 ) {
             printf( "%d bath: %d\n" , bank[i] , store[i] ) ;
         }
@@ -44,17 +53,22 @@ int main() {
 
 int cal_change( int TTcost , int paid ) {
     int change = 0 ;
+    //----|ตรวจสอบว่าเงินที่จ่ายมากกว่าเงินทั้งหมดหรือไม่แล้วจึงคำนวณ
     if( paid < TTcost ) {
         return -1 ;
     }else {
         change = paid - TTcost ;
     }
+    //----|ส่งค่าเงินทอนกลับ
     return change ;
 }
 
 int cal_denomination( int *change_remain , int domination ) {
     int amount ;
+    //----|คำนวณจำนวนที่ต้องทอน
     amount = *change_remain / domination ;
+    //----|คำนวณเงินที่ยังต้องทอนต่อหลังจากหักแล้ว
     *change_remain = *change_remain % domination ;
+    //----|คืนค่าจำนวนที่ต้องทอน
     return amount ;
 }
