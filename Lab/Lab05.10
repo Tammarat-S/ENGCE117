@@ -1,0 +1,60 @@
+#include <stdio.h>
+
+int cal_change( int TTcost , int paid ) ;
+
+int cal_denomination( int *change_remain , int domination ) ;
+
+int main() {
+    int bank[9] = { 1000 , 500 , 100 , 50 , 20 , 10 , 5 , 2 , 1 } ;
+    int store[9] ;
+    int TTcost , A_paid , i = 0 , re_amount ;
+
+    printf( "Enter Total Cost: " ) ;
+    scanf( "%d" , &TTcost ) ;
+
+    printf( "Enter Amount Paid: " ) ;
+    scanf( "%d" , &A_paid ) ;
+
+    int change = cal_change ( TTcost , A_paid ) ;
+    
+    if( change == -1 ) {
+        printf( "\nError amount Paid is less than Total Cost" ) ;
+        return 1 ;
+    }
+
+    re_amount = change ;
+
+    for ( i= 0 ; i < 9 ; i++ ) {
+        store[i] = cal_denomination( &re_amount , bank[i] ) ;
+    }
+
+    printf( "\n--- CHANGE CALCULATION REPORT ---\n" ) ;
+    printf( "Total Cost: %d\n" , TTcost ) ;
+    printf( "Amount Paid: %d\n" , A_paid ) ;
+    printf( "Change Amount: %d\n" , change ) ;
+    printf( "\nDenomunation Breakdown:\n" ) ;
+    for( i = 0 ; i < 9 ; i ++ ) {
+        if( store[i] > 0 ) {
+            printf( "%d bath: %d\n" , bank[i] , store[i] ) ;
+        }
+    }
+
+    return 0 ;
+}
+
+int cal_change( int TTcost , int paid ) {
+    int change = 0 ;
+    if( paid < TTcost ) {
+        return -1 ;
+    }else {
+        change = paid - TTcost ;
+    }
+    return change ;
+}
+
+int cal_denomination( int *change_remain , int domination ) {
+    int amount ;
+    amount = *change_remain / domination ;
+    *change_remain = *change_remain % domination ;
+    return amount ;
+}
