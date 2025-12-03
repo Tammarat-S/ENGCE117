@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <string.h>
+
+void explode( char str1[] , char split , char[][10] , int *count ) ;
+
+int main () {
+    char out [ 20 ][ 10 ] ;
+    int num ;
+    explode( "I/Love/You" , '/' , out , &num ) ;
+    //---|แสดงผลลัพธ์
+    for ( int i = 0 ; i < num ; i ++ ) {
+        printf("str[%d] = %s \n" , i , out[i] ) ;
+    }
+    //---|แสดงจำนวนคำที่แยกได้
+    printf( "count = %d" , num ) ;
+    return 0 ;
+}
+
+void explode( char str1[] , char split , char str2[][10] , int *count ) {
+    int S = strlen(str1) ;
+    int col = 0 ;
+    int row = 0 ;
+    //---|ทำการแยกคำ
+    for ( int i = 0 ; i < S ; i ++ ) {
+        //---|ตรวจสอบว่าเป็นตัวคั่นหรือไม่
+        if ( str1[i] == split ) {
+            str2[row][col] = '\0' ;     
+            row ++ ;
+            col = 0 ;
+        }else {
+            str2[row][col] = str1[i] ;
+            col++ ;
+        }
+    }
+    str2[row][col] = '\0' ;
+    *count = row + 1 ; 
+}
