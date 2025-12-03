@@ -2,11 +2,14 @@
 
 int main() {
     int num1, num2, operationCode, result ;
-    
+
+    //---รับค่า
     if (scanf("%d %d %d", &num1, &num2, &operationCode) != 3) {
         while( getchar() != '\n' ) ;
         return 1 ; 
     }
+    
+    //---เลือกการทำงาน
     switch (operationCode)
     {
     case 1 :
