@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <string.h>
+
+char *reverse( char *str1 ) ;
+
+int main () {
+    char text[50] = "Hello World" ;
+    char *out ;
+    out = reverse( text ) ;
+    printf( "%s" , out) ;
+    delete [] (out) ;
+    return 0 ;
+}
+
+char *reverse( char *str1 ) {
+    int S = strlen(str1) ;
+    char *text = new char[20] ;
+    for( int i = 0 ; i < S ; i ++ ) {
+        text[i] = str1[S-1-i] ;
+    }
+   text[S] = '\0' ;
+   return text ;
+}
