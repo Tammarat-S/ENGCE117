@@ -1,26 +1,28 @@
 #include <stdio.h>
 
-void increase_value ( int *number_ptr ) ;
+void pluse_value ( int *number_ptr ) ;
 
 int main() {
-    int num ;
+    int NUM[1] ;
 
     //----|รับค่าตัวแปรเป็นจำนวนเต็ม
     printf( "Please Enter interger Value: " ) ;
-    scanf( "%d" , &num ) ;
+    if(scanf( "%d" , &NUM[0]) != 1 ) {
+        return 1 ;
+    }
 
     printf( "\n--- POINTER MODIFICATION REPORT ---\n" ) ;
-    printf( "1. Value before function call: %d\n" , num ) ;
+    printf( "1. Value before function call: %d\n" , NUM[0] ) ;
     //----ส่งที่อยู่ของข้อมูลไปหาฟังก์ชัน
-    increase_value( &num ) ;
+    pluse_value( &NUM[0] ) ;
 
-    printf( "2.Value after function call: %d\n" , num ) ;
+    printf( "2.Value after function call: %d\n" , NUM[0] ) ;
 
     return 0 ;
 
 }
 
-void increase_value ( int *number_ptr ) {
+void pluse_value ( int *NUM_increase ) {
     //----|ทำการบวกค่าของข้อมูล
-    *number_ptr += 10 ;
+    *NUM_increase += 10 ;
 }
