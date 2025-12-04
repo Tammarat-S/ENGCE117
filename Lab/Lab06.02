@@ -4,27 +4,29 @@
 void swap_value(int *num1, int *num2) ;
 
 int main() {
-    int dataone[1] , datatwo[1] ;                                           //ตัวแปรเก็บค่าจำนวนเต็มที่รับเข้ามา
+    int dataoone[1] , datatwo[1] ;                                           //ตัวแปรเก็บค่าจำนวนเต็มที่รับเข้ามา
     
     printf("Enter value for num1: ") ;
-    scanf("%d",&dataone[0] ) ;
+    scanf("%d",&dataoone[0] ) ;
     printf("Enter value for num2: ") ;
     scanf("%d",&datatwo[0] ) ;
     
     printf( "\n--- SWAPPING REPORT ---\n" ) ;
-    printf("Before swap - num1 = %d, num2 = %d\n", dataone[0] , datatwo[0] ) ;
+    printf("Before swap - num1 = %d, num2 = %d\n", dataoone[0] , datatwo[0] ) ;
 
-    swap_value(&dataone[0], &datatwo[0] ) ;                                          //เรียกใช้ฟังก์ชัน swap_value โดยส่งที่อยู่ของตัวแปร num1 และ num2 เข้าไป
+    //เรียกใช้ฟังก์ชัน swap_value โดยส่งที่อยู่ของตัวแปร dataone และ datatwo เข้าไป
+    swap_value(&dataoone[0], &datatwo[0] ) ;
     
-    printf("After swap - num1 = %d, num2 = %d\n", dataone[0] , datatwo[0] ) ;
+    printf("After swap - num1 = %d, num2 = %d\n", dataoone[0] , datatwo[0] ) ;
     
     return 0 ;
 
-}//end main
+}
 
 //-----|ฟังก์ชั่นสลับค่าใช้การบวกและลบในการสลับค่า
 void swap_value(int *num1, int *num2){
-    *num1 = *num1 + *num2 ; 
-    *num2 = *num1 - *num2 ; 
-    *num1 = *num1 - *num2  ;
-}//end swap
+    int swap ;
+    swap = *num1 ;
+    *num1 = *num2 ;
+    *num2 = swap ;
+}
