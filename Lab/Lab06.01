@@ -1,11 +1,22 @@
 #include <stdio.h>
 
 void pluse_value ( int *number_ptr ) ;
+int MEGAMAIN() ;
 
 int main() {
-    int NUM[1] ;
 
-    //----|รับค่าตัวแปรเป็นจำนวนเต็ม
+    MEGAMAIN() ;
+
+}
+
+void pluse_value ( int *NUM_increase ) {
+    *NUM_increase += 10 ;
+}
+
+int MEGAMAIN() {
+
+    int NUM[1] ; //สร้างตัวแปรสำหรับเก็บค่าจำนวนเต็ม
+
     printf( "Please Enter interger Value: " ) ;
     if(scanf( "%d" , &NUM[0]) != 1 ) {
         return 1 ;
@@ -13,16 +24,10 @@ int main() {
 
     printf( "\n--- POINTER MODIFICATION REPORT ---\n" ) ;
     printf( "1. Value before function call: %d\n" , NUM[0] ) ;
-    //----ส่งที่อยู่ของข้อมูลไปหาฟังก์ชัน
+    
     pluse_value( &NUM[0] ) ;
 
     printf( "2.Value after function call: %d\n" , NUM[0] ) ;
 
     return 0 ;
-
-}
-
-void pluse_value ( int *NUM_increase ) {
-    //----|ทำการบวกค่าของข้อมูล
-    *NUM_increase += 10 ;
 }
