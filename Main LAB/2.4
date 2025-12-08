@@ -5,12 +5,28 @@
 #define word 20
 
 int MEGAMAIN() ;
-void explode( char str1[] , char split , char[][length] , int *count ) ;
+void explode( char str1[] , char split , char str2[][length] , int *count ) ;
 
 
 int main () {
 
     MEGAMAIN() ;
+
+}
+
+
+int MEGAMAIN() {
+    char out [ word ][ length ] ;
+    int number ;
+    char Input [100] ;
+    gets (Input) ;
+    explode( Input , '/' , out , &number ) ;
+    //---|แสดงผลลัพธ์
+    for ( int i = 0 ; i < number ; i ++ ) {
+        printf("word[%d] = %s \n" , i , out[i] ) ;
+    }
+    printf( "word count = %d" , number ) ;
+    return 0 ;
 }
 
 void explode( char str1[] , char split , char str2[][length] , int *count ) {
@@ -19,37 +35,18 @@ void explode( char str1[] , char split , char str2[][length] , int *count ) {
     int row = 0 ;
     
     for ( int i = 0 ; i < S ; i ++ ) {
-        //----|ป้องกันคำมากเกินขนาดอาเรย์
-        if( row >= word ) {
-            break ;
-        }
+
         //---|ตรวจสอบว่าเป็นตัวคั่นหรือไม่
         if ( str1[i] == split ) {
             str2[row][col] = '\0' ;     
             row ++ ;
             col = 0 ;
         }else {
-            //----|เช็คว่าพื้นที่ยังเหลืออยู๋หรือไม่
-            if( col < length -1 ) {
-                str2[row][col] = str1[i] ;
-                col++ ;
-            }
-        }
-    }
+            str2[row][col] = str1[i] ;
+            col++ ;
+        }//enf if
+    }//end for
+
     str2[row][col] = '\0' ;
     *count = row + 1 ; 
-}
-
-int MEGAMAIN() {
-    char out [ word ][ length ] ;
-    int number ;
-    char Input [15] = {"I/Love/you"} ;
-    explode( Input , '/' , out , &number ) ;
-    //---|แสดงผลลัพธ์
-    for ( int i = 0 ; i < number ; i ++ ) {
-        printf("str[%d] = %s \n" , i , out[i] ) ;
-    }
-    //---|แสดงจำนวนคำที่แยกได้
-    printf( "count = %d" , number ) ;
-    return 0 ;
 }
