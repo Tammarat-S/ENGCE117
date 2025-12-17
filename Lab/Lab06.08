@@ -1,0 +1,54 @@
+#include <stdio.h>
+
+int update( int * , int , int , int ) ;
+
+int main(){
+    int N = 5 ;
+    int i ;
+    int value[5] ;
+    int search ;
+    int newvalue ;
+    int status ;
+
+    printf( "Enter %d Number\n" , N ) ;
+    for( i = 0 ; i < N ; i++ ) {
+        printf( "Num %d: " , i+1 ) ;
+        scanf( "%d" , &value[i] ) ;
+    }
+
+    printf( "\nSearch NUM\n" ) ;
+    scanf( "%d" , &search ) ;
+    printf( "Enter New NUM\n" ) ;
+    scanf( "%d" , &newvalue ) ;
+
+    printf( "Array Before Update: " ) ;
+    for( i = 0 ; i < N ; i ++ ) {
+        printf( "%d " , value[i] ) ;
+    }
+
+    status = update(value , N , search , newvalue ) ;
+
+    printf( "\nArray After Update: " ) ;
+    for( i = 0 ; i < N ; i++ ) {
+        printf( "%d " , value[i] ) ;
+    }
+    printf( "\nstatus Update " ) ;
+    if(status == 1 ) {
+        printf( "Successful" ) ;
+    }else{
+        printf( "Failed" ) ;
+    }
+
+    return 0 ;
+
+}
+
+int update( int *value , int N , int S , int NEW ) {
+    for( int i = 0 ; i < N ; i++ ) {
+        if( value[i] == S ) {
+            value[i] = NEW ;
+            return 1 ;
+        }
+    }
+    return 0 ;
+}
