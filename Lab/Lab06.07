@@ -1,0 +1,30 @@
+#include <stdio.h> 
+
+float calwin( int ) ;
+
+int main() {
+    int outs ;
+    float winrate ;
+    printf( "Enter card outs " ) ;
+    if(scanf( "%d" , &outs ) != 1 ) {
+        return 1 ;
+    }
+    winrate = calwin( outs ) ;
+
+    printf( "Calculated Outs: %d\n" , outs ) ;
+    printf( "win probability %.2f%%\n" , winrate ) ;
+    printf( "Assessment: " ) ;
+    if( winrate >= 30 ) {
+        printf( "Hight win probability" ) ;
+    }else {
+        printf( "Low win probability" ) ; 
+    }
+    
+    return 0 ;
+
+} 
+
+float calwin( int N ) {
+    N = N * 4 ;
+    return N ;
+}
