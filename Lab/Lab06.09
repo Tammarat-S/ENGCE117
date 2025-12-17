@@ -1,0 +1,62 @@
+#include <stdio.h>
+
+int analyze( int * , int * , int , int * ) ;
+void print( int * , int , const char * ) ;
+void get( int * , int , const char * ) ;
+
+int main(){
+    int N = 3 ;
+    int M_revenue[N] ;
+    int M_Expense[N] ;
+    int status ;
+    int Net = 0 ;
+    
+
+    get( M_revenue , N , "REVENUE" ) ;
+    get( M_Expense , N , "EXPENSE" ) ;
+
+
+    printf(" 3 month report\n" ) ;
+    print( M_revenue , N , "REVENUE" ) ;
+    print( M_Expense , N , "EXPENSE" ) ;
+
+    status = analyze(M_revenue , M_Expense , N , &Net ) ;
+
+    printf("NET PROFIT: %d\n" , Net ) ;
+    printf( "Business starus is " ) ;
+    if( status == 1 ) {
+        printf( "PROFITABLE" ) ;
+    }else {
+        printf( "UNPROFITABLE" ) ;
+    }
+
+    return 0 ;
+}
+
+void get( int *M , int N , const char *T ) {
+    int i ;
+    printf( "Enter %d month of %s\n" , N , T ) ;
+    for( i = 0 ; i < N ; i++ ) {    
+        scanf( "%d" , &M[i] ) ;
+    }
+}
+
+void print( int *M , int N , const char *T ) {
+    int TT = 0 ;
+    for(int i = 0 ; i < N ; i++ ){
+        TT += M[i] ;
+    }
+    printf( "TOTAL %s: %d\n" , T , TT ) ;
+}
+
+int analyze( int *MR , int *ME , int N , int *NET ) {
+    for(int i = 0 ; i < N ; i++ ) {
+        *NET += MR[i] - ME[i] ;
+    }
+    if( *NET >= 0 ) {
+        return 1 ;
+    }else {
+        return 0 ;
+    }
+    return 0 ;
+}
