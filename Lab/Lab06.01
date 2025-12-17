@@ -1,33 +1,22 @@
 #include <stdio.h>
 
-void pluse_value ( int *number_ptr ) ;
-int MEGAMAIN() ;
+void increase( int * ) ;
 
-int main() {
-
-    MEGAMAIN() ;
-
-}
-
-void pluse_value ( int *NUM_increase ) {
-    *NUM_increase += 10 ;
-}
-
-int MEGAMAIN() {
-
-    int NUM[1] ; //สร้างตัวแปรสำหรับเก็บค่าจำนวนเต็ม
-
-    printf( "Please Enter interger Value: " ) ;
-    if(scanf( "%d" , &NUM[0]) != 1 ) {
+int main(){
+    int data ;
+    printf( "Enter initial integer value: \n" );
+    while ( scanf("%d", &data) != 1 ) {
         return 1 ;
     }
 
-    printf( "\n--- POINTER MODIFICATION REPORT ---\n" ) ;
-    printf( "1. Value before function call: %d\n" , NUM[0] ) ;
-    
-    pluse_value( &NUM[0] ) ;
-
-    printf( "2.Value after function call: %d\n" , NUM[0] ) ;
+    printf( "--- pointer modification report---\n" ) ;
+    printf( "1. value before function call: %d\n" , data ) ;
+    increase( &data  ) ;
+    printf( "2. value after function call: %d\n" , data ) ;
 
     return 0 ;
+}
+
+void increase( int *data ) {
+    *data += 10 ;
 }
