@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main () {
+    FILE *fp ;
+    int n = 2025 ;
+    char word[100] ;
+    fp = fopen( "TEXT.txt" , "w") ;
+
+    if( fp == NULL ) {
+        printf( "can not open file" ) ;
+        exit (0) ;
+    }
+    printf( "write data to %s\n" , "TEXT.txt" ) ;
+    fprintf( fp , "%s\n%d" , "Hello, C file handling is easy" , n ) ;
+    fclose(fp) ;
+
+    fp = fopen( "TEXT.txt" , "r") ;
+
+    if( fp == NULL ) {
+        printf( "can not open file" ) ;
+        exit (0) ;
+    }
+
+    while ( fgets( word , sizeof(word) , fp ) != NULL ) {
+        printf( "%s" , word ) ;
+    }
+    fclose(fp) ;
+
+    return 0 ;
+
+}
