@@ -1,0 +1,72 @@
+#include <stdio.h>
+struct student {
+    int id ;
+    int score ;
+    char grade ;
+} ;
+
+void calgrade( struct student *S ) ;
+void display() ;
+
+int main() {
+    int choice ;
+    struct student stu ;
+
+    do{
+        display() ;
+        scanf( "%d" , &choice ) ;
+
+        switch (choice)
+        {
+        case 1 :
+            printf( "enter student ID: " ) ;
+            scanf( "%d" , &stu.id ) ;
+            printf( "Enter Score 1-100: " ) ;
+            scanf( "%d" , &stu.score ) ;
+            calgrade( &stu ) ;
+            break ;
+        
+        case 2 :
+            if( stu.id == 0 ) {
+                printf( "dont have this student(ID is 0)\n" ) ;
+            }else{
+            printf( "Report\n" ) ;
+            printf( "Student ID : %d\n" , stu.id ) ;
+            printf( "Score %d\n" , stu.score ) ;
+            printf( "Grade %c\n" , stu.grade ) ;
+            }
+            break ;
+        case 3 :
+            printf( "EXIT BYE" ) ;
+            break ;
+        default:
+            break;
+        }
+    } while (choice != 3) ;
+    
+    return 0 ;
+    
+}
+
+void calgrade( struct student *S ) {
+    if( S->score >= 80 ) {
+        S->grade = 'A' ;
+    }else if ( S->score >= 70 && S->score < 80 ) {
+        S->grade = 'B' ;
+    }else if ( S->score >= 60 && S->score < 70 ) {
+        S->grade = 'C' ;
+    }else if ( S->score >= 50 && S->score < 60 ) {
+        S->grade = 'D' ;
+    }else if ( S->score < 50 && S->score >= 0 ) {
+        S->grade = 'F' ;
+    }
+    printf( "Data Update " ) ;
+}
+
+void display() {
+    printf( " MENU \n" ) ;
+    printf( "1.Input Student Data\n" ) ;
+    printf( "2.View Student Report\n" ) ;
+    printf( "3.Exit program\n" ) ;
+    printf( "Enter Choice: " ) ;
+}
