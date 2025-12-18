@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    FILE *fp ;
+    int n = 5 ;
+    int num[n] ;
+    int i = 0 ;
+    int sum = 0 ;
+
+    fp = fopen( "input.txt" , "r") ;
+
+    if( fp == NULL ) {
+        printf( "can not open file" ) ;
+        exit (0) ;
+    }
+
+    printf( "reading data from %s\n" , "input.txt" ) ;
+    while ( i < n && fscanf( fp, "%d," , &num[i] ) != EOF ) {
+        i++ ;
+    }
+
+    fclose(fp) ;
+    
+    printf( "Data read: " ) ;
+    for ( i = 0 ; i < n ; i++ ) {
+        printf( "%d," , num[i] ) ;
+        sum += num[i] ;
+    }
+
+    printf( "\nTotal sum: " ) ;
+    printf( "%d" , sum ) ;
+
+    return 0 ;
+
+}
