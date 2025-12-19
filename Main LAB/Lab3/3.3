@@ -5,22 +5,21 @@ struct student {
     float gpa ;
 };
 
-struct student up(struct student g); 
+struct student upgrade(struct student S); 
 
 int main() {
     struct student stu ;
     stu.sex = 'M' ;
-    stu.gpa = 2.50 ;
-    stu = up(stu) ;
+    stu.gpa = 2.75 ;
+    stu = upgrade(stu) ;
     printf( "%.2f" , stu.gpa ) ;
     return 0 ;
 }
 
-struct student up(struct student g){
+struct student upgrade(struct student S){
 
-    g.gpa += g.gpa * 0.1 ; 
-    printf( "%f\n" , g.gpa ) ;
+    S.gpa += S.gpa * 0.1 ;
 
-    return g ; // คืนค่า สตัรคทั้งหมด
+    return S ;
 
 }
