@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+struct student {
+    char sex ;
+    float gpa ;
+};
+
+void up(struct student *g); 
+
+int main() {
+    struct student stu ;
+    stu.sex = 'M' ;
+    stu.gpa = 2.50 ;
+    up(&stu) ;
+    printf( "%.2f" , stu.gpa ) ;
+    return 0 ;
+}
+
+void up(struct student *g){
+
+    g->gpa += (*g).gpa * 0.1 ; 
+
+}
