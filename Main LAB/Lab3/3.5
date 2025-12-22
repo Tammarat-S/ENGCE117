@@ -1,0 +1,41 @@
+#include <stdio.h> 
+#include <stdlib.h>
+
+struct student {
+    int id ;
+    float gpa ;
+} ;
+
+
+struct student stu[20][10], (*Getstu( int *room ))[10] ;
+
+int main() {
+    struct student (*stu)[10] ;
+
+    int group ;
+
+    stu = Getstu( &group ) ;
+
+     for( int i = 0 ; i < group ; i++ ) {
+        printf( "Room number %d\n" , i+1 ) ;
+        for ( int a = 0 ; a < 10 ; a++ ) {
+            printf( "%d studen ID %d score %.2f\n" , a+1 , stu[i][a].id , stu[i][a].gpa ) ;
+        }
+    }
+
+    return 0 ;
+
+}
+
+struct student (*Getstu( int *room ))[10] {
+    printf( "Enter room: " ) ;
+    scanf( "%d" , room ) ;
+
+   for (int i = 0 ; i < *room ; i++ ) {
+        for(int a = 0 ; a < 10 ; a++ ) {
+            stu[i][a].id = 100 + a ;
+            stu[i][a].gpa = rand() % 100 + 1 ;
+        }
+    }
+    return stu ;
+}
