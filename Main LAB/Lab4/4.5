@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <string.h>
+
+struct student {
+    char name[20] ;
+    int age ;
+    char sex ;
+    float gpa ;
+    struct student *next ;
+};
+
+void Node( struct student *stu , char n[] , int a , char s , float g ) ;
+void gonext(struct student **walk ) ;
+
+int main() {
+    struct student *start, *now1, **now2  ;
+    start = new struct student ;
+    Node( start, "one" , 6 , 'M' , 3.11 ) ;
+
+    start->next = new student ;
+    Node( start->next, "two" , 8 , 'F' , 3.22 ) ;
+
+    start->next->next = new struct student ;
+    Node( start->next->next, "three" , 10 , 'M' , 3.33 ) ;
+
+    start->next->next->next = new struct student ;
+    Node( start->next->next->next , "four" , 12 , 'F' , 3.44 ) ;
+
+    now1 = start ;
+    now2 = &start ;
+
+    printf( "%s\n" , (*now2)->name ) ;
+    gonext( now2 ) ;
+    printf( "%s\n" , (*now2)->name ) ;
+    *now2 = (*now2)->next ;
+    printf( "%s" , (*now2)->name ) ;
+
+    return 0 ;
+}
+
+void Node( struct student *stu , char n[] , int a , char s , float g ) {
+    strcpy( stu->name , n ) ;
+    stu->age = a ;
+    stu->sex = s ;
+    stu->gpa = g ;
+}
+
+void gonext(struct student **walk ) {
+    *walk = (*walk)->next ;
+}
