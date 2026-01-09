@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <string.h>
+
+struct studentNode{
+    char name[20] ;
+    int age ;
+    char sex ;
+    float gpa ;
+    struct studentNode *next ;
+} ;
+
+void showall( struct studentNode **walk ) ;
+struct studentNode *AddNode( struct studentNode **walk, char name[] , int age , char sex , float gpa ) ;
+void InsertNode( struct studentNode **walk, char name[] , int age , char sex , float gpa ) ;
+void DelNode( struct studentNode **walk ) ;
+void gonext(struct studentNode ***walk ) ;
+
+int main(){
+    struct studentNode *start, **now ;
+    start = NULL ;
+    now = &start ;
+    InsertNode( now , "one" , 10 , 'M' , 3.33 ) ; showall( &start ) ;
+    InsertNode( now , "two" , 12 , 'F' , 3.44 ) ; showall( &start ) ;
+    gonext(&now) ;
+    InsertNode( now , "three" , 10 , 'M' , 3.33 ) ; showall( &start ) ;
+    InsertNode( now , "four" , 12 , 'F' , 3.44 ) ; showall( &start ) ;
+    gonext(&now) ;
+    
+    DelNode( now ) ; showall( &start ) ;
+    return 0 ;
+} 
+
+void showall( struct studentNode **walk ) {
+    struct studentNode *temp = *walk ;
+    while (temp != NULL ) {
+        printf( "%s " , temp->name ) ;
+        temp = temp->next ;
+    }
+    printf( "\n" ) ;
+}
+
+void InsertNode( struct studentNode **walk, char name[] , int age , char sex , float gpa ) {
+    
+    struct studentNode *newNode = new struct studentNode ;
+    strcpy( newNode->name , name ) ;
+    newNode->age = age ;
+    newNode->sex = sex ;
+    newNode->gpa = gpa ;
+    newNode->next = *walk ;
+    *walk = newNode ;
+}
+
+void DelNode( struct studentNode **walk) {
+    struct studentNode *temp ;
+    temp = (*walk)->next ;
+    (*walk)->next = temp->next ;
+    delete temp ;
+}
+
+void gonext(struct studentNode ***walk ) {
+    *walk = &((**walk)->next) ;
+}
